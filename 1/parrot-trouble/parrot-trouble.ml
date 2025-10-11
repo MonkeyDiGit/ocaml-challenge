@@ -1,7 +1,6 @@
 let parrot_trouble talking time = 
-  if 0 <= time && time <= 23 then
-    (if talking && (20 < time || time < 7) then Some true else Some false)
-  else None;;
+  if time < 0 || time > 23 then None else
+    Some (talking && (time < 7 || 20 < time));;
 
 assert (parrot_trouble true 12 = Some false);;
 assert (parrot_trouble false 23 = Some false );;
